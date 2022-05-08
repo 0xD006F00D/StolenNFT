@@ -1,0 +1,512 @@
+⸻ Starting analysis ⸻
+❌ CriminalRecords.arrest() (contracts/CriminalRecords.sol:122-163) uses a weak PRNG: "kindaRandom = uint256(keccak256(bytes)(abi.encodePacked(_caseNumber,holder,holderWanted,report.timestamp,block.timestamp,blockhash(uint256)(block.number)))) % 100 (contracts/CriminalRecords.sol#134-145)"
+
+
+❌ CriminalRecords.bribe(address,uint256) (contracts/CriminalRecords.sol:73-89) performs a multiplication on the result of a division:
+	•levels = amount / bribePerLevel (contracts/CriminalRecords.sol#78)
+	•cost = levels * bribePerLevel (contracts/CriminalRecords.sol#82)
+
+
+❌ CriminalRecords.arrest() (contracts/CriminalRecords.sol:122-163) uses a dangerous strict equality:
+	• report.stolenId == 0 (contracts/CriminalRecords.sol#124)
+
+
+❌ CriminalRecords.getReport(address) (contracts/CriminalRecords.sol:237-251) uses a dangerous strict equality:
+	• _reports[reporter].stolenId == 0 (contracts/CriminalRecords.sol#246)
+
+
+❌ CriminalRecords.reportTheft(uint256) (contracts/CriminalRecords.sol:105-119) uses a dangerous strict equality:
+	• _reports[msg.sender].stolenId == stolenId && block.timestamp - _reports[msg.sender].timestamp <= reportValidity (contracts/CriminalRecords.sol#112-113)
+
+
+❌ StolenNFT.emptyTipJar(address) (contracts/StolenNFT.sol:191-197) uses a dangerous strict equality:
+	• amount == 0 (contracts/StolenNFT.sol#194)
+
+
+❌ StolenNFT.royaltyInfo(uint256,uint256).royaltyValue (contracts/StolenNFT.sol:307) is a local variable never initialized
+
+
+❌ StolenNFT.steal(uint64,address,uint256,address,uint32,string).originalOwner (contracts/StolenNFT.sol:101) is a local variable never initialized
+
+
+❌ StolenNFT.originalTokenURI(address,uint256).fetchedURI (contracts/StolenNFT.sol:260) is a local variable never initialized
+
+
+❌ StolenNFT.originalOwnerOf(address,uint256)._holder (contracts/StolenNFT.sol:281) is a local variable never initialized
+
+
+❌ StolenNFT.royaltyInfo(uint256,uint256).holder (contracts/StolenNFT.sol:306) is a local variable never initialized
+
+
+❌ StolenNFT.originalTokenURI(address,uint256) (contracts/StolenNFT.sol:253-267) ignores return value by IERC721Metadata(contractAddress).tokenURI(tokenId) (contracts/StolenNFT.sol#259-263)
+
+
+❌ StolenNFT.originalOwnerOf(address,uint256) (contracts/StolenNFT.sol:275-289) ignores return value by IERC721(contractAddress).ownerOf(tokenId) (contracts/StolenNFT.sol#281-285)
+
+
+❌ ERC721._checkOnERC721Received(address,address,uint256,bytes) (contracts/tokens/ERC721.sol:403-426) ignores return value by IERC721Receiver(to).onERC721Received(msg.sender,from,tokenId,_data) (contracts/tokens/ERC721.sol#410-422)
+
+
+❌ MockNFT.constructor(string,string,string)._name (contracts/mock/MockNFT.sol:15) shadows:
+	• ERC721._name (contracts/tokens/ERC721.sol#30) (state variable)
+
+
+❌ MockNFT.constructor(string,string,string)._symbol (contracts/mock/MockNFT.sol:16) shadows:
+	• ERC721._symbol (contracts/tokens/ERC721.sol#33) (state variable)
+
+
+❌ ERC20Permit.constructor(string,string)._name (contracts/tokens/ERC20Permit.sol:38) shadows:
+	• ERC20._name (contracts/tokens/ERC20.sol#52) (state variable)
+
+
+❌ ERC20Permit.constructor(string,string)._symbol (contracts/tokens/ERC20Permit.sol:38) shadows:
+	• ERC20._symbol (contracts/tokens/ERC20.sol#53) (state variable)
+
+
+❌ ERC721Permit.constructor(string,string)._name (contracts/tokens/ERC721Permit.sol:36) shadows:
+	• ERC721._name (contracts/tokens/ERC721.sol#30) (state variable)
+
+
+❌ ERC721Permit.constructor(string,string)._symbol (contracts/tokens/ERC721Permit.sol:36) shadows:
+	• ERC721._symbol (contracts/tokens/ERC721.sol#33) (state variable)
+
+
+❌ Variable 'StolenNFT.originalTokenURI(address,uint256).fetchedURI (contracts/StolenNFT.sol:260)' in StolenNFT.originalTokenURI(address,uint256) (contracts/StolenNFT.sol#253-267) potentially used before declaration: fetchedURI (contracts/StolenNFT.sol#262)
+
+
+❌ Variable 'StolenNFT.originalOwnerOf(address,uint256)._holder (contracts/StolenNFT.sol:281)' in StolenNFT.originalOwnerOf(address,uint256) (contracts/StolenNFT.sol#275-289) potentially used before declaration: _holder.code.length == 0 (contracts/StolenNFT.sol#282)
+
+
+❌ Variable 'StolenNFT.originalOwnerOf(address,uint256)._holder (contracts/StolenNFT.sol:281)' in StolenNFT.originalOwnerOf(address,uint256) (contracts/StolenNFT.sol#275-289) potentially used before declaration: _holder (contracts/StolenNFT.sol#283)
+
+
+❌ Variable 'ERC721._checkOnERC721Received(address,address,uint256,bytes).retval (contracts/tokens/ERC721.sol:411)' in ERC721._checkOnERC721Received(address,address,uint256,bytes) (contracts/tokens/ERC721.sol#403-426) potentially used before declaration: retval == IERC721Receiver.onERC721Received.selector (contracts/tokens/ERC721.sol#413)
+
+
+❌ Variable 'ERC721._checkOnERC721Received(address,address,uint256,bytes).reason (contracts/tokens/ERC721.sol:414)' in ERC721._checkOnERC721Received(address,address,uint256,bytes) (contracts/tokens/ERC721.sol#403-426) potentially used before declaration: reason.length == 0 (contracts/tokens/ERC721.sol#415)
+
+
+❌ Variable 'ERC721._checkOnERC721Received(address,address,uint256,bytes).reason (contracts/tokens/ERC721.sol:414)' in ERC721._checkOnERC721Received(address,address,uint256,bytes) (contracts/tokens/ERC721.sol#403-426) potentially used before declaration: revert(uint256,uint256)(32 + reason,mload(uint256)(reason)) (contracts/tokens/ERC721.sol#419)
+
+
+❌ Reentrancy in BlackMarket.listNftWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32) (contracts/BlackMarket.sol:51-61):
+	• stolenNFT.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/BlackMarket.sol#59)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• stolenNFT.transferFrom(msg.sender,address(this),tokenId) (contracts/BlackMarket.sol#104)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• _allTokensIndex[tokenId] = _allTokens.length (contracts/utils/EnumerableEscrow.sol#97)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• _ownedTokens[owner][length] = tokenId (contracts/utils/EnumerableEscrow.sol#87)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• _ownedTokensIndex[tokenId] = length (contracts/utils/EnumerableEscrow.sol#88)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• listings[tokenId] = Listing(seller,price) (contracts/BlackMarket.sol#141)
+
+
+❌ Reentrancy in StakingHideout.stashWithPermit(uint256,uint256,uint8,bytes32,bytes32) (contracts/StakingHideout.sol:64-73):
+	• stakingNft.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/StakingHideout.sol#71)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• stakingNft.transferFrom(msg.sender,address(this),tokenId) (contracts/StakingHideout.sol#60)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _allTokensIndex[tokenId] = _allTokens.length (contracts/utils/EnumerableEscrow.sol#97)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _ownedTokens[owner][length] = tokenId (contracts/utils/EnumerableEscrow.sol#87)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _ownedTokensIndex[tokenId] = length (contracts/utils/EnumerableEscrow.sol#88)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _stakers[tokenId] = msg.sender (contracts/StakingHideout.sol#56)
+
+
+❌ Reentrancy in CriminalRecords.bribeCheque(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/CriminalRecords.sol:92-102):
+	• money.permit(criminal,address(this),amount,deadline,v,r,s) (contracts/CriminalRecords.sol#100)
+	• bribe(criminal,amount) (contracts/CriminalRecords.sol#101)
+	• money.burn(msg.sender,cost) (contracts/CriminalRecords.sol#86)
+	• Wanted(criminal,nextLevel) (contracts/CriminalRecords.sol#301)
+	• bribe(criminal,amount) (contracts/CriminalRecords.sol#101)
+
+
+❌ Reentrancy in BlackMarket.buyWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32) (contracts/BlackMarket.sol:38-48):
+	• money.permit(msg.sender,address(this),price,deadline,v,r,s) (contracts/BlackMarket.sol#46)
+	• buy(tokenId) (contracts/BlackMarket.sol#47)
+	• sentRoyalty = money.transferFrom(msg.sender,royaltyReceiver,royaltyShare) (contracts/BlackMarket.sol#122)
+	• sent = money.transferFrom(msg.sender,listing.seller,listing.price - royaltyShare) (contracts/BlackMarket.sol#126)
+	• stolenNFT.transferFrom(address(this),msg.sender,tokenId) (contracts/BlackMarket.sol#129)
+	• Sold(msg.sender,listing.seller,tokenId,listing.price) (contracts/BlackMarket.sol#114)
+	• buy(tokenId) (contracts/BlackMarket.sol#47)
+
+
+❌ Reentrancy in BlackMarket.listNftWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32) (contracts/BlackMarket.sol:51-61):
+	• stolenNFT.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/BlackMarket.sol#59)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• stolenNFT.transferFrom(msg.sender,address(this),tokenId) (contracts/BlackMarket.sol#104)
+	• Listed(msg.sender,tokenId,price) (contracts/BlackMarket.sol#102)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+
+
+❌ Reentrancy in StakingHideout.stashWithPermit(uint256,uint256,uint8,bytes32,bytes32) (contracts/StakingHideout.sol:64-73):
+	• stakingNft.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/StakingHideout.sol#71)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• stakingNft.transferFrom(msg.sender,address(this),tokenId) (contracts/StakingHideout.sol#60)
+	• Stashed(msg.sender,tokenId) (contracts/StakingHideout.sol#58)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+
+
+❌ CriminalRecords.reportTheft(uint256) (contracts/CriminalRecords.sol:105-119) uses timestamp for comparisons
+	• _reports[msg.sender].stolenId == stolenId && block.timestamp - _reports[msg.sender].timestamp <= reportValidity (contracts/CriminalRecords.sol#112-113)
+
+
+❌ CriminalRecords.arrest() (contracts/CriminalRecords.sol:122-163) uses timestamp for comparisons
+	• report.stolenId == 0 (contracts/CriminalRecords.sol#124)
+	• block.timestamp - report.timestamp < reportDelay (contracts/CriminalRecords.sol#125)
+	• block.timestamp - report.timestamp > reportValidity (contracts/CriminalRecords.sol#126)
+	• arrested = ! aboveTheLaw[holder] && holderWanted > 0 && kindaRandom < thiefCaughtChance + holderWanted (contracts/CriminalRecords.sol#148-150)
+
+
+❌ CriminalRecords.getReport(address) (contracts/CriminalRecords.sol:237-251) uses timestamp for comparisons
+	• _reports[reporter].stolenId == 0 (contracts/CriminalRecords.sol#246)
+	• processed = block.timestamp - _reports[reporter].timestamp >= reportDelay && block.timestamp - _reports[reporter].timestamp <= reportValidity (contracts/CriminalRecords.sol#247-248)
+
+
+❌ StakingHideout.getReward() (contracts/StakingHideout.sol:111-118) uses timestamp for comparisons
+	• reward > 0 (contracts/StakingHideout.sol#114)
+
+
+❌ ERC20Permit.permit(address,address,uint256,uint256,uint8,bytes32,bytes32) (contracts/tokens/ERC20Permit.sol:46-68) uses timestamp for comparisons
+	• block.timestamp > deadline (contracts/tokens/ERC20Permit.sol#56)
+
+
+❌ ERC721Permit.permit(address,address,uint256,uint256,uint8,bytes32,bytes32) (contracts/tokens/ERC721Permit.sol:44-67) uses timestamp for comparisons
+	• block.timestamp > deadline (contracts/tokens/ERC721Permit.sol#55)
+
+
+❌ Create2Deployer.deploy(bytes32,bytes) (contracts/utils/Create2Deployer.sol:28-35) uses assembly
+	• INLINE ASM (contracts/utils/Create2Deployer.sol#29-34)
+
+
+❌ ERC721._checkOnERC721Received(address,address,uint256,bytes) (contracts/tokens/ERC721.sol:403-426) uses assembly
+	• INLINE ASM (contracts/tokens/ERC721.sol#418-420)
+
+
+❌ ERC721Enumerable._removeTokenFromAllTokensEnumeration(uint256) (contracts/tokens/ERC721Enumerable.sol:161-179) has costly operations inside a loop:
+	• delete _allTokensIndex[tokenId] (contracts/tokens/ERC721Enumerable.sol#177)
+
+
+❌ ERC721Enumerable._removeTokenFromAllTokensEnumeration(uint256) (contracts/tokens/ERC721Enumerable.sol:161-179) has costly operations inside a loop:
+	• _allTokens.pop() (contracts/tokens/ERC721Enumerable.sol#178)
+
+
+❌ ERC721Enumerable._removeTokenFromOwnerEnumeration(address,uint256) (contracts/tokens/ERC721Enumerable.sol:136-154) has costly operations inside a loop:
+	• delete _ownedTokensIndex[tokenId] (contracts/tokens/ERC721Enumerable.sol#152)
+
+
+❌ Pragma version^0.8.0 (contracts/utils/Create2Deployer.sol:4) allows old versions
+
+
+❌ solc-0.8.13 is not recommended for deployment
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/interfaces/IERC2981.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/utils/Strings.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/BlackMarket.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/CounterfeitMoney.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/CriminalRecords.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/StakingHideout.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/StolenNFT.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/interfaces/IBlackMarket.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/interfaces/ICounterfeitMoney.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/interfaces/ICriminalRecords.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/interfaces/IStakingHideout.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/interfaces/IStolenNFT.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/mock/MockNFT.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/tokens/ERC20.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/tokens/ERC20Permit.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/tokens/ERC721.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/tokens/ERC721Enumerable.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/tokens/ERC721Permit.sol:2) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/tokens/IERC721Permit.sol:3) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/utils/ECDSA.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/utils/EIP712.sol:4) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/utils/EnumerableEscrow.sol:3) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/utils/IEnumerableEscrow.sol:3) allows old versions
+
+
+❌ Pragma version^0.8.0 (contracts/utils/Ownable.sol:4) allows old versions
+
+
+❌ Low level call in StolenNFT.emptyTipJar(address) (contracts/StolenNFT.sol:191-197):
+	• (success) = recipient.call{value: amount}() (contracts/StolenNFT.sol#195)
+
+
+❌ Function IERC20Permit.DOMAIN_SEPARATOR() (node_modules/@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol:59) is not in mixedCase
+
+
+❌ Parameter BlackMarket.closeMarket(bool)._marketClosed (contracts/BlackMarket.sol:85) is not in mixedCase
+
+
+❌ Parameter CounterfeitMoney.setWorker(address,bool)._worker (contracts/CounterfeitMoney.sol:22) is not in mixedCase
+
+
+❌ Parameter CounterfeitMoney.setWorker(address,bool)._working (contracts/CounterfeitMoney.sol:22) is not in mixedCase
+
+
+❌ Parameter CriminalRecords.setWantedParameters(uint8,uint8,uint8,uint32,uint32,uint256,uint256)._maxWanted (contracts/CriminalRecords.sol:191) is not in mixedCase
+
+
+❌ Parameter CriminalRecords.setWantedParameters(uint8,uint8,uint8,uint32,uint32,uint256,uint256)._sentence (contracts/CriminalRecords.sol:192) is not in mixedCase
+
+
+❌ Parameter CriminalRecords.setWantedParameters(uint8,uint8,uint8,uint32,uint32,uint256,uint256)._thiefCaughtChance (contracts/CriminalRecords.sol:193) is not in mixedCase
+
+
+❌ Parameter CriminalRecords.setWantedParameters(uint8,uint8,uint8,uint32,uint32,uint256,uint256)._reportDelay (contracts/CriminalRecords.sol:194) is not in mixedCase
+
+
+❌ Parameter CriminalRecords.setWantedParameters(uint8,uint8,uint8,uint32,uint32,uint256,uint256)._reportValidity (contracts/CriminalRecords.sol:195) is not in mixedCase
+
+
+❌ Parameter CriminalRecords.setWantedParameters(uint8,uint8,uint8,uint32,uint32,uint256,uint256)._reward (contracts/CriminalRecords.sol:196) is not in mixedCase
+
+
+❌ Parameter CriminalRecords.setWantedParameters(uint8,uint8,uint8,uint32,uint32,uint256,uint256)._bribePerLevel (contracts/CriminalRecords.sol:197) is not in mixedCase
+
+
+❌ Parameter StakingHideout.setRewardRate(uint256)._rewardRate (contracts/StakingHideout.sol:91) is not in mixedCase
+
+
+❌ Parameter StakingHideout.setBalanceLimit(uint256)._balanceLimit (contracts/StakingHideout.sol:99) is not in mixedCase
+
+
+❌ Parameter StolenNFT.setMaximumSupply(uint256)._maximumSupply (contracts/StolenNFT.sol:175) is not in mixedCase
+
+
+❌ Function ERC20Permit.DOMAIN_SEPARATOR() (contracts/tokens/ERC20Permit.sol:81-83) is not in mixedCase
+
+
+❌ Variable ERC20Permit._PERMIT_TYPEHASH (contracts/tokens/ERC20Permit.sol:28-31) is not in mixedCase
+
+
+❌ Parameter ERC721.safeTransferFrom(address,address,uint256,bytes)._data (contracts/tokens/ERC721.sol:179) is not in mixedCase
+
+
+❌ Function ERC721Permit.DOMAIN_SEPARATOR() (contracts/tokens/ERC721Permit.sol:80-82) is not in mixedCase
+
+
+❌ Variable ERC721Permit._PERMIT_TYPEHASH (contracts/tokens/ERC721Permit.sol:26-29) is not in mixedCase
+
+
+❌ Variable EIP712._CACHED_DOMAIN_SEPARATOR (contracts/utils/EIP712.sol:31) is not in mixedCase
+
+
+❌ Variable EIP712._CACHED_CHAIN_ID (contracts/utils/EIP712.sol:32) is not in mixedCase
+
+
+❌ Variable EIP712._CACHED_THIS (contracts/utils/EIP712.sol:33) is not in mixedCase
+
+
+❌ Variable EIP712._HASHED_NAME (contracts/utils/EIP712.sol:35) is not in mixedCase
+
+
+❌ Variable EIP712._HASHED_VERSION (contracts/utils/EIP712.sol:36) is not in mixedCase
+
+
+❌ Variable EIP712._TYPE_HASH (contracts/utils/EIP712.sol:37) is not in mixedCase
+
+
+❌ Variable Ownable._contractOwner (contracts/utils/Ownable.sol:22) is too similar to Ownable.constructor(address).contractOwner_ (contracts/utils/Ownable.sol#29)
+
+
+❌ setAboveTheLaw(address,bool) should be declared external:
+	• CriminalRecords.setAboveTheLaw(address,bool) (contracts/CriminalRecords.sol:222-225)
+
+
+❌ tokenURI(uint256) should be declared external:
+	• ERC721.tokenURI(uint256) (contracts/tokens/ERC721.sol:105)
+	• MockNFT.tokenURI(uint256) (contracts/mock/MockNFT.sol#52-58)
+	• StolenNFT.tokenURI(uint256) (contracts/StolenNFT.sol#228-245)
+
+
+❌ royaltyInfo(uint256,uint256) should be declared external:
+	• StolenNFT.royaltyInfo(uint256,uint256) (contracts/StolenNFT.sol:299-320)
+
+
+❌ setBaseURI(string) should be declared external:
+	• MockNFT.setBaseURI(string) (contracts/mock/MockNFT.sol:44-46)
+
+
+❌ withdraw() should be declared external:
+	• MockNFT.withdraw() (contracts/mock/MockNFT.sol:68-71)
+
+
+❌ name() should be declared external:
+	• ERC20.name() (contracts/tokens/ERC20.sol:72-74)
+
+
+❌ symbol() should be declared external:
+	• ERC20.symbol() (contracts/tokens/ERC20.sol:80-82)
+
+
+❌ decimals() should be declared external:
+	• ERC20.decimals() (contracts/tokens/ERC20.sol:97-99)
+
+
+❌ totalSupply() should be declared external:
+	• ERC20.totalSupply() (contracts/tokens/ERC20.sol:104-106)
+
+
+❌ balanceOf(address) should be declared external:
+	• ERC20.balanceOf(address) (contracts/tokens/ERC20.sol:111-113)
+
+
+❌ transfer(address,uint256) should be declared external:
+	• ERC20.transfer(address,uint256) (contracts/tokens/ERC20.sol:123-126)
+
+
+❌ approve(address,uint256) should be declared external:
+	• ERC20.approve(address,uint256) (contracts/tokens/ERC20.sol:151-154)
+
+
+❌ transferFrom(address,address,uint256) should be declared external:
+	• ERC20.transferFrom(address,address,uint256) (contracts/tokens/ERC20.sol:172-180)
+
+
+❌ increaseAllowance(address,uint256) should be declared external:
+	• ERC20.increaseAllowance(address,uint256) (contracts/tokens/ERC20.sol:194-198)
+
+
+❌ decreaseAllowance(address,uint256) should be declared external:
+	• ERC20.decreaseAllowance(address,uint256) (contracts/tokens/ERC20.sol:214-227)
+
+
+❌ permit(address,address,uint256,uint256,uint8,bytes32,bytes32) should be declared external:
+	• ERC20Permit.permit(address,address,uint256,uint256,uint8,bytes32,bytes32) (contracts/tokens/ERC20Permit.sol:46-68)
+	• ERC721Permit.permit(address,address,uint256,uint256,uint8,bytes32,bytes32) (contracts/tokens/ERC721Permit.sol#44-67)
+
+
+❌ nonces(address) should be declared external:
+	• ERC20Permit.nonces(address) (contracts/tokens/ERC20Permit.sol:73-75)
+	• ERC721Permit.nonces(address) (contracts/tokens/ERC721Permit.sol#72-74)
+
+
+❌ name() should be declared external:
+	• ERC721.name() (contracts/tokens/ERC721.sol:91-93)
+
+
+❌ symbol() should be declared external:
+	• ERC721.symbol() (contracts/tokens/ERC721.sol:98-100)
+
+
+❌ approve(address,uint256) should be declared external:
+	• ERC721.approve(address,uint256) (contracts/tokens/ERC721.sol:110-118)
+
+
+❌ setApprovalForAll(address,bool) should be declared external:
+	• ERC721.setApprovalForAll(address,bool) (contracts/tokens/ERC721.sol:132-134)
+
+
+❌ transferFrom(address,address,uint256) should be declared external:
+	• ERC721.transferFrom(address,address,uint256) (contracts/tokens/ERC721.sol:152-159)
+
+
+❌ safeTransferFrom(address,address,uint256) should be declared external:
+	• ERC721.safeTransferFrom(address,address,uint256) (contracts/tokens/ERC721.sol:164-170)
+
+
+❌ tokenOfOwnerByIndex(address,uint256) should be declared external:
+	• ERC721Enumerable.tokenOfOwnerByIndex(address,uint256) (contracts/tokens/ERC721Enumerable.sol:48-57)
+
+
+❌ tokenByIndex(uint256) should be declared external:
+	• ERC721Enumerable.tokenByIndex(uint256) (contracts/tokens/ERC721Enumerable.sol:69-72)
+
+
+❌ tokenOfOwnerByIndex(address,uint256) should be declared external:
+	• EnumerableEscrow.tokenOfOwnerByIndex(address,uint256) (contracts/utils/EnumerableEscrow.sol:39-42)
+
+
+❌ tokenByIndex(uint256) should be declared external:
+	• EnumerableEscrow.tokenByIndex(uint256) (contracts/utils/EnumerableEscrow.sol:54-57)
+
+
+❌ renounceOwnership() should be declared external:
+	• Ownable.renounceOwnership() (contracts/utils/Ownable.sol:55-57)
+
+
+❌ transferOwnership(address) should be declared external:
+	• Ownable.transferOwnership(address) (contracts/utils/Ownable.sol:63-66)
+
+
+
+⸻ Analysis: 1 succeeded, 0 failed, 0 skipped ⸻
+Refreshing explorer...
+Loaded 134 issues, displaying 105

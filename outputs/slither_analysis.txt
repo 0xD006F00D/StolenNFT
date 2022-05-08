@@ -1,0 +1,107 @@
+"slither.hiddenDetectors": [
+	"assembly",
+	"costly-loop",
+	"external-function",
+	"low-level-calls",
+	"naming-convention",
+	"reused-constructor",
+	"shadowing-local",
+	"similar-names",
+	"solc-version",
+	"timestamp",
+	"uninitialized-local",
+	"unused-return",
+	"variable-scope"
+]
+
+⸻ Starting analysis ⸻
+❌ CriminalRecords.arrest() (contracts/CriminalRecords.sol:122-163) uses a weak PRNG: "kindaRandom = uint256(keccak256(bytes)(abi.encodePacked(_caseNumber,holder,holderWanted,report.timestamp,block.timestamp,blockhash(uint256)(block.number)))) % 100 (contracts/CriminalRecords.sol#134-145)"
+
+
+❌ CriminalRecords.bribe(address,uint256) (contracts/CriminalRecords.sol:73-89) performs a multiplication on the result of a division:
+	•levels = amount / bribePerLevel (contracts/CriminalRecords.sol#78)
+	•cost = levels * bribePerLevel (contracts/CriminalRecords.sol#82)
+
+
+❌ CriminalRecords.arrest() (contracts/CriminalRecords.sol:122-163) uses a dangerous strict equality:
+	• report.stolenId == 0 (contracts/CriminalRecords.sol#124)
+
+
+❌ CriminalRecords.getReport(address) (contracts/CriminalRecords.sol:237-251) uses a dangerous strict equality:
+	• _reports[reporter].stolenId == 0 (contracts/CriminalRecords.sol#246)
+
+
+❌ CriminalRecords.reportTheft(uint256) (contracts/CriminalRecords.sol:105-119) uses a dangerous strict equality:
+	• _reports[msg.sender].stolenId == stolenId && block.timestamp - _reports[msg.sender].timestamp <= reportValidity (contracts/CriminalRecords.sol#112-113)
+
+
+❌ StolenNFT.emptyTipJar(address) (contracts/StolenNFT.sol:191-197) uses a dangerous strict equality:
+	• amount == 0 (contracts/StolenNFT.sol#194)
+
+
+❌ Reentrancy in BlackMarket.listNftWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32) (contracts/BlackMarket.sol:51-61):
+	• stolenNFT.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/BlackMarket.sol#59)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• stolenNFT.transferFrom(msg.sender,address(this),tokenId) (contracts/BlackMarket.sol#104)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• _allTokensIndex[tokenId] = _allTokens.length (contracts/utils/EnumerableEscrow.sol#97)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• _ownedTokens[owner][length] = tokenId (contracts/utils/EnumerableEscrow.sol#87)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• _ownedTokensIndex[tokenId] = length (contracts/utils/EnumerableEscrow.sol#88)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• listings[tokenId] = Listing(seller,price) (contracts/BlackMarket.sol#141)
+
+
+❌ Reentrancy in StakingHideout.stashWithPermit(uint256,uint256,uint8,bytes32,bytes32) (contracts/StakingHideout.sol:64-73):
+	• stakingNft.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/StakingHideout.sol#71)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• stakingNft.transferFrom(msg.sender,address(this),tokenId) (contracts/StakingHideout.sol#60)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _allTokensIndex[tokenId] = _allTokens.length (contracts/utils/EnumerableEscrow.sol#97)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _ownedTokens[owner][length] = tokenId (contracts/utils/EnumerableEscrow.sol#87)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _ownedTokensIndex[tokenId] = length (contracts/utils/EnumerableEscrow.sol#88)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• _stakers[tokenId] = msg.sender (contracts/StakingHideout.sol#56)
+
+
+❌ Reentrancy in CriminalRecords.bribeCheque(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/CriminalRecords.sol:92-102):
+	• money.permit(criminal,address(this),amount,deadline,v,r,s) (contracts/CriminalRecords.sol#100)
+	• bribe(criminal,amount) (contracts/CriminalRecords.sol#101)
+	• money.burn(msg.sender,cost) (contracts/CriminalRecords.sol#86)
+	• Wanted(criminal,nextLevel) (contracts/CriminalRecords.sol#301)
+	• bribe(criminal,amount) (contracts/CriminalRecords.sol#101)
+
+
+❌ Reentrancy in BlackMarket.buyWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32) (contracts/BlackMarket.sol:38-48):
+	• money.permit(msg.sender,address(this),price,deadline,v,r,s) (contracts/BlackMarket.sol#46)
+	• buy(tokenId) (contracts/BlackMarket.sol#47)
+	• sentRoyalty = money.transferFrom(msg.sender,royaltyReceiver,royaltyShare) (contracts/BlackMarket.sol#122)
+	• sent = money.transferFrom(msg.sender,listing.seller,listing.price - royaltyShare) (contracts/BlackMarket.sol#126)
+	• stolenNFT.transferFrom(address(this),msg.sender,tokenId) (contracts/BlackMarket.sol#129)
+	• Sold(msg.sender,listing.seller,tokenId,listing.price) (contracts/BlackMarket.sol#114)
+	• buy(tokenId) (contracts/BlackMarket.sol#47)
+
+
+❌ Reentrancy in BlackMarket.listNftWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32) (contracts/BlackMarket.sol:51-61):
+	• stolenNFT.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/BlackMarket.sol#59)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+	• stolenNFT.transferFrom(msg.sender,address(this),tokenId) (contracts/BlackMarket.sol#104)
+	• Listed(msg.sender,tokenId,price) (contracts/BlackMarket.sol#102)
+	• listNft(tokenId,price) (contracts/BlackMarket.sol#60)
+
+
+❌ Reentrancy in StakingHideout.stashWithPermit(uint256,uint256,uint8,bytes32,bytes32) (contracts/StakingHideout.sol:64-73):
+	• stakingNft.permit(msg.sender,address(this),tokenId,deadline,v,r,s) (contracts/StakingHideout.sol#71)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+	• stakingNft.transferFrom(msg.sender,address(this),tokenId) (contracts/StakingHideout.sol#60)
+	• Stashed(msg.sender,tokenId) (contracts/StakingHideout.sol#58)
+	• stash(tokenId) (contracts/StakingHideout.sol#72)
+
+
+
+⸻ Analysis: 1 succeeded, 0 failed, 0 skipped ⸻
+Refreshing explorer...
+Loaded 134 issues, displaying 12

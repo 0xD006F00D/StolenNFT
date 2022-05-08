@@ -1,0 +1,50 @@
+{
+	"name": "StolenNFT",
+	"version": "1.0.0",
+	"description": "Contracts, Documentation and development environment of StolenNFT",
+	"main": "",
+	"scripts": {
+		"chain": "hardhat node --network hardhat",
+		"compile": "hardhat compile",
+		"clean": "hardhat clean",
+		"dodoc": "hardhat dodoc",
+		"export": "hardhat run ./scripts/export_abi.js",
+		"deploy:local": "hardhat deploy --tags local --export-all ./details/contractsAbi.json",
+		"deploy:deployer:network": "hardhat run scripts/deploy_deployer.js --network",
+		"deploy:network": "hardhat run scripts/deploy_deterministic.js --network",
+		"networks": "hardhat networks",
+		"calculate": "hardhat run scripts/calculateDeploymentCost.js",
+		"test": "hardhat test --network hardhat",
+		"coverage": "hardhat coverage --network hardhat"
+	},
+	"devDependencies": {
+		"@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
+		"@nomiclabs/hardhat-etherscan": "^3.0.3",
+		"@nomiclabs/hardhat-waffle": "^2.0.3",
+		"@openzeppelin/contracts": "^4.5.0",
+		"@primitivefi/hardhat-dodoc": "^0.2.3",
+		"chai": "^4.3.6",
+		"dotenv": "^16.0.0",
+		"eslint": "^8.14.0",
+		"eslint-config-prettier": "^8.5.0",
+		"ethereum-waffle": "^3.4.4",
+		"ethers": "^5.6.5",
+		"hardhat": "^2.9.3",
+		"hardhat-deploy": "^0.11.4",
+		"hardhat-gas-reporter": "^1.0.8",
+		"prettier": "^2.6.2",
+		"prettier-plugin-solidity": "^1.0.0-beta.19",
+		"solhint": "^3.3.7",
+		"solidity-coverage": "^0.8.0-beta.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/0xD006F00D/StolenNFT.git"
+	},
+	"author": "0xD006F00D",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/0xD006F00D/StolenNFT/issues"
+	},
+	"homepage": "https://stolennft.art"
+}
