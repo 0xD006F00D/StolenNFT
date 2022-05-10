@@ -12,8 +12,9 @@
 		"deploy:local": "hardhat deploy --tags local --export-all ./details/contractsAbi.json",
 		"deploy:deployer:network": "hardhat run scripts/deploy_deployer.js --network",
 		"deploy:network": "hardhat run scripts/deploy_deterministic.js --network",
+		"verify:network": "hardhat run ./scripts/verify.js --network",
 		"networks": "hardhat networks",
-		"calculate": "hardhat run scripts/calculateDeploymentCost.js",
+		"cost": "hardhat run scripts/calculateDeploymentCost.js",
 		"test": "hardhat test --network hardhat",
 		"coverage": "hardhat coverage --network hardhat"
 	},

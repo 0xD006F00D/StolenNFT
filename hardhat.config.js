@@ -152,7 +152,7 @@ module.exports = {
 			default: 'privatekey://' + process.env.DEPLOY_PRIVATE_KEY
 		},
 		owner: {
-			31337: 1,
+			31337: process.env.LOCAL_TEST_WALLET,
 			default: process.env.DEPLOY_OWNER
 		},
 		test: {
@@ -168,40 +168,42 @@ module.exports = {
 		// noColors: true
 	},
 	etherscan: {
-		//https://etherscan.io/
-		mainnet: process.env.ETHERSCAN_API_KEY,
-		//https://ropsten.etherscan.io
-		ropsten: process.env.ETHERSCAN_API_KEY,
-		//https://rinkeby.etherscan.io
-		rinkeby: process.env.ETHERSCAN_API_KEY,
-		//https://goerli.etherscan.io
-		goerli: process.env.ETHERSCAN_API_KEY,
-		//https://kovan.etherscan.io
-		kovan: process.env.ETHERSCAN_API_KEY,
-		//https://ftmscan.com/
-		opera: process.env.FANTOM_API_KEY,
-		//https://testnet.ftmscan.com
-		ftmTestnet: process.env.FANTOM_API_KEY,
-		//https://optimistic.etherscan.io/
-		optimisticEthereum: process.env.OPTIMISM_API_KEY,
-		//https://kovan-optimistic.etherscan.io/
-		optimisticKovan: process.env.OPTIMISM_API_KEY,
-		//https://polygonscan.com
-		polygon: process.env.POLYGON_API_KEY,
-		//https://mumbai.polygonscan.com/
-		polygonMumbai: process.env.POLYGON_API_KEY,
-		//https://arbiscan.io/
-		arbitrumOne: process.env.ARBITRUM_API_KEY,
-		//https://testnet.arbiscan.io/
-		arbitrumTestnet: process.env.ARBITRUM_API_KEY,
-		//https://snowtrace.io/
-		avalanche: process.env.AVALANCHE_API_KEY,
-		//https://testnet.snowtrace.io/
-		avalancheFujiTestnet: process.env.AVALANCHE_API_KEY,
-		//https://explorer.harmony.one
-		harmony: process.env.HARMONY_API_KEY,
-		//https://explorer.pops.one
-		harmonyTest: process.env.HARMONY_API_KEY
+		apiKey: {
+			//https://etherscan.io/
+			mainnet: process.env.ETHERSCAN_API_KEY,
+			//https://ropsten.etherscan.io
+			ropsten: process.env.ETHERSCAN_API_KEY,
+			//https://rinkeby.etherscan.io
+			rinkeby: process.env.ETHERSCAN_API_KEY,
+			//https://goerli.etherscan.io
+			goerli: process.env.ETHERSCAN_API_KEY,
+			//https://kovan.etherscan.io
+			kovan: process.env.ETHERSCAN_API_KEY,
+			//https://ftmscan.com/
+			opera: process.env.FANTOM_API_KEY,
+			//https://testnet.ftmscan.com
+			ftmTestnet: process.env.FANTOM_API_KEY,
+			//https://optimistic.etherscan.io/
+			optimisticEthereum: process.env.OPTIMISM_API_KEY,
+			//https://kovan-optimistic.etherscan.io/
+			optimisticKovan: process.env.OPTIMISM_API_KEY,
+			//https://polygonscan.com
+			polygon: process.env.POLYGON_API_KEY,
+			//https://mumbai.polygonscan.com/
+			polygonMumbai: process.env.POLYGON_API_KEY,
+			//https://arbiscan.io/
+			arbitrumOne: process.env.ARBITRUM_API_KEY,
+			//https://testnet.arbiscan.io/
+			arbitrumTestnet: process.env.ARBITRUM_API_KEY,
+			//https://snowtrace.io/
+			avalanche: process.env.AVALANCHE_API_KEY,
+			//https://testnet.snowtrace.io/
+			avalancheFujiTestnet: process.env.AVALANCHE_API_KEY,
+			//https://explorer.harmony.one
+			harmony: process.env.HARMONY_API_KEY,
+			//https://explorer.pops.one
+			harmonyTest: process.env.HARMONY_API_KEY
+		}
 	}
 };
 

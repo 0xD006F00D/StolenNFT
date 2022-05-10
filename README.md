@@ -40,7 +40,8 @@ pnpm chain                      # add -- --no-deploy to disable automatic deploy
 pnpm deploy:local               # to deploy locally via hardhat-deploy
 pnpm deploy:network             # deploy contracts via scripts to given network
 pnpm deploy:deployer:network    # deploy create2 deployer via script to given network
-pnpm calculate                  # calculate deployment costs across networks
+pnpm verify:network             # verify all contracts for a given network
+pnpm cost                       # calculate deployment costs across networks
 pnpm test                       # run tests & display gas report
 pnpm coverage                   # calculate test coverage
 ```

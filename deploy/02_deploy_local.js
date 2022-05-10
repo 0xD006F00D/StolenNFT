@@ -12,7 +12,7 @@ module.exports = async ({ provider, getNamedAccounts, deployments, getChainId })
 
 	console.log(`Using deployer ${deployer}`);
 
-	const ownerWallet = ethers.provider.getSigner(owner);
+	const ownerWallet = ethers.provider.getSigner(0);
 	await ownerWallet.sendTransaction({
 		to: test,
 		value: ethers.utils.parseEther('2')
